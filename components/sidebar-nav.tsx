@@ -1,9 +1,17 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { Package2, Home, ShoppingCart, Users, Package, CalendarDays, User } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { usePathname } from "next/navigation"
+import Link from "next/link";
+import {
+  Package2,
+  Home,
+  ShoppingCart,
+  Users,
+  Package,
+  CalendarDays,
+  User,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { usePathname } from "next/navigation";
 
 export function SidebarNav({ onClose }: { onClose?: () => void }) {
   const pathname = usePathname();
@@ -12,7 +20,7 @@ export function SidebarNav({ onClose }: { onClose?: () => void }) {
     { href: "/orders", icon: ShoppingCart, label: "Orders" },
     { href: "/products", icon: Package, label: "Products" },
     { href: "/customers", icon: User, label: "Customers" },
-    {href:"/users", icon:Users, label:"Manage Users"}
+    { href: "/users", icon: Users, label: "Manage Users" },
   ];
 
   return (
@@ -20,7 +28,7 @@ export function SidebarNav({ onClose }: { onClose?: () => void }) {
       <div className="flex h-[60px] items-center justify-between border-b px-6">
         <Link href="/" className="flex items-center gap-2 font-semibold">
           <Package2 className="h-6 w-6" />
-          <span>Acme Orders</span>
+          <span>OrderDesk</span>
         </Link>
         {/* Close button only on mobile */}
         {onClose && (
@@ -41,13 +49,14 @@ export function SidebarNav({ onClose }: { onClose?: () => void }) {
               key={item.href}
               href={item.href}
               className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-primary ${
-                pathname === item.href ? "bg-muted text-primary" : "text-muted-foreground"
+                pathname === item.href
+                  ? "bg-muted text-primary"
+                  : "text-muted-foreground"
               }`}
               onClick={onClose}
             >
               <item.icon className="h-4 w-4" />
               {item.label}
-   
             </Link>
           ))}
         </nav>
